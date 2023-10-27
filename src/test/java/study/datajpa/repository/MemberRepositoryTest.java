@@ -16,6 +16,7 @@ import study.datajpa.entity.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import java.awt.print.Pageable;
 import java.util.Arrays;
 import java.util.List;
@@ -275,7 +276,6 @@ class MemberRepositoryTest {
         em.flush();
     }
 
-
     @Test
     public void lock() {
         //given
@@ -286,8 +286,11 @@ class MemberRepositoryTest {
 
         //when
         List<Member> result = memberRepository.findLockByUsername("member1");
-
     }
 
+    @Test
+    public void callCustom() {
+        List<Member> result = memberRepository.findMemberCustom();
+    }
 
 }
